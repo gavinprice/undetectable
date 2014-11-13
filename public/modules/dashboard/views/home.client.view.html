@@ -17,6 +17,31 @@
 			</p>
 		</div>
 	</div>
+    
+    <div class="jumbotron text-center">
+        Hi <span data-ng-bind="authentication.user.displayName"></span>,
+        <div>
+            <div ng-show="pillBox.isComplaint != 'false'">
+                <span>Did you take your meds for today yet?</span></br>
+                <button class="btn btn-primary btn-lg" ng-click="submitPillBox()">YES</button>
+                <button class="btn btn-primary btn-lg" ng-click="pillBox.isComplaint = 'false' ">NO</button>
+            </div>
+            
+            <span ng-show="pillBox.isComplaint == 'false'">
+                Why didn't you?
+                <select data-ng-model="pillBox.reason">
+                    <option value="Forgot to take it">Forgot to take it</option>
+                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
+                    <option value="Adverse side effects">Adverse side effects</option>
+                    <option value="Medicine unavailable">Medicine unavailable</option>
+                    <option value="Think I dont need it">Think I dont need it</option>
+                    <option value="Others">Others</option>
+                </select></br>
+                <button class="btn btn-primary btn-lg" ng-click="submitPillBox()">OK</button>
+            </span>
+        </div>
+    </div>
+    
 	<div>
 		<h2>Congrats! You've configured and ran the sample application successfully.</h2>
 		<p>MEAN.JS is a web application boilerplate, which means you should start changing everything :-)</p>
