@@ -5,6 +5,7 @@
     <div class="col-md-12">
         <form name="labForm" class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
+                <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
                 <div class="form-group" ng-class="{ 'has-error': labForm.resDate.$dirty && labForm.resDate.$invalid }">
                     <label class="control-label" for="resDate">Lab Date (eg. 2014-12-21)</label>
                     <div class="controls">
