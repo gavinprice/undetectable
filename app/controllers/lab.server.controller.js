@@ -34,6 +34,13 @@ exports.read = function(req, res) {
 };
 
 /**
+ * Show the current article
+ */
+exports.delete = function(req, res) {
+    res.json(req.lab);
+};
+
+/**
  * Update a lab
  */
 exports.update = function(req, res) {

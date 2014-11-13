@@ -8,7 +8,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app) {
 
-    /*app.route('/labs')
+    app.route('/labs')
         .get(labs.list)
         .post(users.requiresLogin, labs.create);
 
@@ -18,5 +18,5 @@ module.exports = function(app) {
         .delete(users.requiresLogin, labs.hasAuthorization, labs.delete);
 
     // Finish by binding the article middleware
-    app.param('labId', labs.LabByID); */
+    app.param('labId', labs.LabByID);
 };

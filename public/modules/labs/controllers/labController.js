@@ -1,7 +1,21 @@
 'use strict';
 
-angular.module('labs').controller('LabController', ['$scope',
-    function($scope) {
+angular.module('labs')
+
+    // TODO refactor into its own service - didnt seem to work before
+    .factory('Labs', ['$resource',
+        function($resource) {
+            return $resource('labs/:labId', {
+                articleId: '@_id'
+            }, {
+                update: {
+                    method: 'PUT'
+                }
+            });
+    }])
+
+    .controller('LabController', ['$scope', '$location', 'Labs',
+    function($scope, $location, Labs) {
         $scope.labHeader = 'Lab Results';
         $scope.init = function() {
 
@@ -18,18 +32,19 @@ angular.module('labs').controller('LabController', ['$scope',
         }
 
         $scope.create = function() {
-            /*var lab = new Lab({
-                cd4: this.cd4Count,
-                content: this.content
+            var lab = new Labs({
+                cd4: this.cd4,
+                undetectable: this.undetectable,
+                labDate: this.labDate,
+                viralLoad: this.viralLoad
             });
-            article.$save(function(response) {
-                $location.path('articles/' + response._id);
+            lab.$save(function(response) {
+                $location.path('lab/' + response._id);
+                $scope.msg = response;
 
-                $scope.title = '';
-                $scope.content = '';
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
-            });*/
+            });
         };
     }
 ]);

@@ -14,13 +14,13 @@ var LabSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    tcell: {
+    cd4: {
         type: String,
         default: '',
         trim: true,
         required: 'Cannot be blank'
     },
-    vload: {
+    viralLoad: {
         type: String,
         default: '',
         trim: true,
@@ -34,6 +34,7 @@ var LabSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     }
+
 });
 
 mongoose.model('Lab', LabSchema);

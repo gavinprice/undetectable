@@ -1,4 +1,4 @@
-<section data-ng-controller="labController">
+<section data-ng-controller="LabController">
     <div class="page-header">
         <h1>New Lab Result</h1>
     </div>
@@ -6,7 +6,7 @@
         <form name="labForm" class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group" ng-class="{ 'has-error': labForm.resDate.$dirty && labForm.resDate.$invalid }">
-                    <label class="control-label" for="resDate">Lab Date</label>
+                    <label class="control-label" for="resDate">Lab Date (eg. 2014-12-21)</label>
                     <div class="controls">
                         <input name="resDate" type="text" data-ng-model="labDate" id="resDate" class="form-control" placeholder="Date" required>
                     </div>
