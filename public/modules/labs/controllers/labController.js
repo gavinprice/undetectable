@@ -52,5 +52,56 @@ angular.module('labs')
                 $scope.error = errorResponse.data.message;
             });
         };
+
+        $scope.lineData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "blue",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "green",
+                    pointHighlightFill: "red",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
+
+            ]
+        };
+
+        $scope.pieData = [
+            { value : 25, color : "#F7464A" },
+            { value : 75, color : "#D4CCC5" }
+
+        ];
+
+        $scope.pieOptions =  {
+            // Chart.js options can go here.
+            scaleShowLabels: true,  // Interpolated JS string - can access value
+            scaleLabel: "12",
+            // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+            scaleIntegersOnly: true,
+
+            // String - Scale label font declaration for the scale label
+            scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+            // Number - Scale label font size in pixels
+            scaleFontSize: 12,
+
+            // String - Scale label font weight style
+            scaleFontStyle: "normal",
+
+            // String - Scale label font colour
+            scaleFontColor: "#666",
+
+            // Boolean - whether or not the chart should be responsive and resize when the browser does.
+            responsive: false
+        };
+
+        $scope.lineOptions =  {
+            // Chart.js options can go here.
+        };
+
     }
 ]);

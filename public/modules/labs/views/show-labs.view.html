@@ -1,4 +1,7 @@
 <div class="container" data-ng-controller="LabController" data-ng-init="findLatestLab()">
     <div data-ng-bind="labHeader"></div>
-    <!--<highchart id="chart1" config="chartConfig"></highchart>-->
+
+
+    <canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions" width="350" height="350"></canvas>
+    <canvas tc-chartjs chart-type="line" chart-data="lineData" width="350" chart-options="lineOptions" height="350"></canvas>
 </div>
