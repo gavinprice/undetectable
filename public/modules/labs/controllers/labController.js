@@ -20,6 +20,12 @@ angular.module('labs')
         $scope.init = function() {
 
         };
+        $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
 
         $scope.findLatestLab = function(){
             var lab = {
