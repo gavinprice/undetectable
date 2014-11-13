@@ -1,8 +1,213 @@
+ body {
+ 	font-family: Helvetica, Verdana, Arial;
+ 	font-size: 14px;
+ 	font-weight: 300;
+ 	color: #8c8c8c;
+ 	background: url(/modules/users/img/bg.png) repeat;
+ }
+
+a{
+	color: #0885cf;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #0885cf;
+	text-decoration: underline;
+}
+
+p{
+	font-size: 14px;
+}
+
+.clear{
+ 	clear: both;
+ }
+
+.lighttext{
+	font-family:'Lato', sans-serif, Helvetica, Verdana, Arial;
+}
+
+h1{
+	font-family:'Lato', sans-serif, Helvetica, Verdana, Arial;
+	font-size: 52px;
+}
+
+h2{
+	font-size: 38px;
+	font-family:'Lato', sans-serif, Helvetica, Verdana, Arial;
+}
+
+h3{
+	font-size: 20px;
+}
+
+.panel{
+	margin:10px 0;
+	padding:10px;
+}
+
+.headerIcon{
+
+}
+
+.headerIcon .icon{
+	float: right;
+	width: 20px;
+	height: 20px;
+}
+
+.panel .data{
+	margin: ;
+}
+
+.button_panel{
+	margin: 20px 0 5px;
+}
+
+.button_panel .btn{
+	float: right;
+}
+
+.btn{
+	background: #a5c2d0;
+	color: #fff;
+	padding: 7px 12px;
+}
+
+.btn:hover{
+	background: #60aacd;
+	color: #fff;
+}
+
+.paneldate{
+	padding: 3px 5px;
+	text-align: right;
+}
+
+/**** Undectable ****/
+.undectable{
+	margin: 10px 0;
+	text-align: center;
+}
+
+.undectable .status{
+	margin: 10px 0;
+}
+
+.undectable .indicator{
+	background: #c98388;
+	width:30px;
+	height: 30px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	animation: indicatorGrow 1s ease;
+}
+
+.undectable.true .indicator{
+	background: #83c9c9;
+}
+
+.undectable .text{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 0 5px;
+}
+
+
+/**** Result number ****/
+.resultNumber{
+	font-size: 45px;
+	color: #3a81a4;
+}
+
+.resultNumber .unit{
+	font-size: 20px;
+}
+
+/**** Good job ****/
+.good{
+	font-size: 25px;
+	margin: 10px 0;
+	color: #83c9c9;
+	text-align: center;
+}
+
+/**** Trend status ****/
+.trend_status{
+	background: url(/modules/users/img/sprite.png) -1px 1px no-repeat;
+	width: 30px;
+	height: 60px;
+	text-align: center;
+	margin: 10px auto;
+	animation: h60 1s ease;
+}
+
+.trend_status.good.up{
+	background-position: -2px 1px;
+}
+
+.trend_status.bad.up{
+	background-position: -2px -81px;
+}
+
+.trend_status.good.down{
+	background-position: -61px 1px;
+}
+
+.trend_status.bad.down{
+	background-position: -61px -81px;
+}
+
+/**** Charts ****/
+.chart{
+	width: 100%;
+	height: 150px;
+	background: #d0a5be;
+	text-align: center;
+}
+
+
+
+
+
+
 @media (min-width: 992px) {
 	.nav-users {
 		position: fixed;
 	}
+
+	.panel{
+		padding: 10px 20px;
+	}
 }
+
+@media (max-width: 992px) {
+	section.container{
+		padding: 0 10px;
+	}
+
+	.panel .data{
+		margin: 20px 0 0;
+	}
+
+	h1{
+		font-size: 24px;
+		-webkit-transition: font-size 1s /* For Safari 3.1 to 6.0 */
+    	transition: font-size 1s;
+    	margin: 10px 0;
+	}
+
+	.btn{
+		width: 100%;
+	}
+}
+
+
 .remove-account-container {
 	display: inline-block;
 	position: relative;
@@ -11,4 +216,40 @@
 	top: 10px;
 	right: 10px;
 	position: absolute;
+}
+
+@keyframes h60 {
+    from { height: 0; }
+    to { height: 60px; }
+}
+
+@keyframes indicatorGrow{
+	0% {
+		height:0;
+		width: 0;
+	}
+	15% {
+		height:20px;
+		width: 20px;
+	}
+	30% {
+		height:15px;
+		width: 15px;
+	}
+	45% {
+		height:25px;
+		width: 25px;
+	}
+	60% {
+		height:15px;
+		width: 15px;
+	}
+	75% {
+		height:25px;
+		width: 25px;
+	}
+	100% {
+		height:30px;
+		width: 30px;
+	}
 }
