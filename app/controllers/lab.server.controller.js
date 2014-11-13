@@ -87,6 +87,16 @@ exports.LabByID = function(req, res, next, id) {
     });
 };
 
+exports.LatestLab = function(req, res, next, id) {
+    Lab.find().limit(1).sort({$natural:-1}).exec(function(err, lab) {
+        if (err) return next(err);
+        if (!lab) return next(new Error('Failed to load lab ' + id));
+        req.lab = lab;
+        next();
+    });
+};
+
+
 /**
  * Article authorization middleware
  */

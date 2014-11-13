@@ -14,12 +14,18 @@ angular.module('labs')
             });
     }])
 
-    .controller('LabController', ['$scope', '$location', 'Labs',
-    function($scope, $location, Labs) {
+
+
+    .controller('LabController', ['$scope','$stateParams', '$location', 'Labs',
+    function($scope, $stateParams, $location, Labs) {
         $scope.labHeader = 'Lab Results';
         $scope.init = function() {
 
         };
+
+        $scope.labels = [];
+        $scope.data = [];
+
         $scope.open = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
@@ -28,14 +34,19 @@ angular.module('labs')
         };
 
         $scope.findLatestLab = function(){
-            var lab = {
-                labDate: '2014-01-21',
-                undetectable: true,
-                cd4: 200,
-                viralLoad: 50
-            }
-            $scope.lab = lab;
+
         }
+
+        $scope.find = function() {
+            $scope.labs = Labs.query((function(res){
+                console.log(res);
+                for(var i=0;i<res.length; i++){
+                    $scope.labels.push(res[i].labDate)
+                    $scope.data.push(res[i].cd4);
+                }
+            }));
+
+        };
 
         $scope.create = function() {
             var lab = new Labs({
@@ -52,5 +63,59 @@ angular.module('labs')
                 $scope.error = errorResponse.data.message;
             });
         };
+
+        $scope.lineData = {
+            //labels: $scope.labels,
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "blue",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "green",
+                    pointHighlightFill: "red",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    //data: $scope.data,
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
+
+            ]
+        };
+
+        $scope.pieData = [
+            { value : 25, color : "#F7464A" },
+            { value : 75, color : "#83c9c9" }
+
+        ];
+
+        $scope.pieOptions =  {
+            // Chart.js options can go here.
+            scaleShowLabels: true,  // Interpolated JS string - can access value
+            scaleLabel: "12",
+            // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+            scaleIntegersOnly: true,
+
+            // String - Scale label font declaration for the scale label
+            scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+            // Number - Scale label font size in pixels
+            scaleFontSize: 12,
+
+            // String - Scale label font weight style
+            scaleFontStyle: "normal",
+
+            // String - Scale label font colour
+            scaleFontColor: "#666",
+
+            // Boolean - whether or not the chart should be responsive and resize when the browser does.
+            responsive: true
+        };
+
+        $scope.lineOptions =  {
+            // Chart.js options can go here.
+            responsive: true
+        };
+
     }
 ]);
