@@ -5,24 +5,30 @@
     <div class="col-md-12">
         <form name="labForm" class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
-                <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
-                <div class="form-group" ng-class="{ 'has-error': labForm.resDate.$dirty && labForm.resDate.$invalid }">
-                    <label class="control-label" for="resDate">Lab Date (eg. 2014-12-21)</label>
-                    <div class="controls">
-                        <input name="resDate" type="text" data-ng-model="labDate" id="resDate" class="form-control" placeholder="Date" required>
-                    </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="labDate">Date eg. 2014-11-05</label>
+                    <input id="labDate" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="labDate" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': labForm.cd4.$dirty && labForm.cd4.$invalid }">
-                    <label class="control-label" for="cd4">CD4/TCell</label>
+                    <label class="control-label" for="cd4">CD4/TCell Count </label>
                     <div class="controls">
-                        <input name="cd4" type="text" data-ng-model="cd4" id="cd4" class="form-control" placeholder="CD4/TCell" required>
+                        <input name="cd4" type="text" data-ng-model="cd4" id="cd4" class="form-control" placeholder="CD4/TCell cells mm3" required>
                     </div>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': labForm.viralLoadText.$dirty && labForm.viralLoadText.$invalid }">
-                    <label class="control-label" for="viralLoadChk">Viral Load</label>
+                    <label class="control-label" for="viralLoadChk">Undetectable ?</label>
+
                     <div class="controls">
                         <input name="viralLoadChk" type="checkbox" data-ng-model="undetectable" id="viralLoadChk" class="form-control">
-                        <input name="viralLoadText" type="text" data-ng-model="viralLoad" id="viralLoadText" class="form-control" placeholder="Viral Load" required>
+
+                    </div>
+                    <div class="controls">
+                        <label class="control-label" for="viralLoadChk">Viral Load</label>
+                        <input name="viralLoadText" type="text" data-ng-model="viralLoad" id="viralLoadText" class="form-control" placeholder="Viral Load in copies/mL" required>
                     </div>
 
                 </div>
