@@ -1,89 +1,88 @@
 <section data-ng-controller="HomeController">
 	<!-- Intro -->
 	<div id="QuickTips" class="panel">
-		<h2>Hi <span data-ng-bind="authentication.user.displayName"></span>,</h3>
-        <div>
-            <div ng-show="pillBox.isComplaint != 'false'">
-                <span>Did you take your meds for today yet?</span></br>
-                <button class="btn btn-primary btn-lg" ng-click="submitPillBox()">YES</button>
-                <button class="btn btn-primary btn-lg" ng-click="pillBox.isComplaint = 'false' ">NO</button>
-            </div>
-            
-            <span ng-show="pillBox.isComplaint == 'false'">
-                Why didn't you?
-                <select data-ng-model="pillBox.reason">
-                    <option value="Forgot to take it">Forgot to take it</option>
-                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
-                    <option value="Adverse side effects">Adverse side effects</option>
-                    <option value="Medicine unavailable">Medicine unavailable</option>
-                    <option value="Think I dont need it">Think I dont need it</option>
-                    <option value="Others">Others</option>
-                </select></br>
-                <button class="btn btn-primary btn-lg" ng-click="submitPillBox()">OK</button>
-            </span>
-        </div>
+		<div class="panelcontent">
+			<h2>Hi <span data-ng-bind="authentication.user.displayName"></span>,</h3>
+	        <div>
+	            <div ng-show="pillBox.isComplaint != 'false'">
+	                <span>Did you take your meds for today yet?</span></br>
+	                <button class="btn" ng-click="submitPillBox()">YES</button>
+	                <button class="btn" ng-click="pillBox.isComplaint = 'false' ">NO</button>
+	            </div>
+	            
+	            <span ng-show="pillBox.isComplaint == 'false'">
+	                Why didn't you?
+	                <select data-ng-model="pillBox.reason">
+	                    <option value="Forgot to take it">Forgot to take it</option>
+	                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
+	                    <option value="Adverse side effects">Adverse side effects</option>
+	                    <option value="Medicine unavailable">Medicine unavailable</option>
+	                    <option value="Think I dont need it">Think I dont need it</option>
+	                    <option value="Others">Others</option>
+	                </select></br>
+	                <button class="btn" ng-click="submitPillBox()">OK</button>
+	            </span>
+	        </div>
+	    </div>
 	</div>
 
 	<!-- Quick tips panel -->
 	<div id="QuickTips" class="panel">
-		<h1 class="headerIcon">
-			Quick Tips
-			<div class="icon"></div>
-		</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-		</p>
+		<div class="panelcontent">
+			<h1 class="headerIcon">
+				Quick Tips
+				<div class="icon"></div>
+			</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+			</p>
 
-		<div class="button_panel">
-			<a class="btn">Read More</a>
+			<div class="button_panel">
+				<a class="btn">Read More</a>
+			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 
 	<!-- Lab results panel -->
 	<div class="panel">
-		<h1 class="headerIcon">
-			Your Progress
-			<div class="icon"></div>
-		</h1>
+		<div class="panelcontent">
+			<h1 class="headerIcon">
+				Your Progress
+				<div class="icon"></div>
+			</h1>
 
-		<div class="row-fluid">
-			<div class="paneldate">Since: Jan 12, 2013</div> 
-		</div>
+			<div class="row-fluid">
+				<div class="paneldate">Since: Jan 12, 2013</div> 
+			</div>
 
-		<div class="row data">
-			<div class="col-md-4 col-xs-12">
-				<!--
-				<div class="resultNumber lighttext">
-					34<span class="unit">mm</span>
+			<div class="row data">
+				<div class="col-md-4 col-xs-12">
+
+					<div class="undectable true">
+						You are currently:
+						<div class="status">
+							<div class="indicator"></div>
+							<div class="text">undetectable</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div class="good">Good job!</div>
+
+
 				</div>
-			-->
-
-				<div class="undectable true">
-					You are currently:
-					<div class="status">
-						<div class="indicator"></div>
-						<div class="text">undetectable</div>
-						<div class="clearfix"></div>
+				<div class="col-md-8 col-xs-12">
+					<div class="chart">
+						<h1>GRAPH</h1>
 					</div>
 				</div>
-
-				<div class="trend_status good up w70"></div>
-
-				<div class="good">Good job!</div>
-
-
 			</div>
-			<div class="col-md-8 col-xs-12">
-				<div class="chart">
-					<h1>GRAPH</h1>
-				</div>
-			</div>
-		</div>
 
-		<div class="button_panel">
-			<button class="btn">Read More</button>
+			<div class="button_panel">
+				<button class="btn">Read More</button>
+			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
 </section>

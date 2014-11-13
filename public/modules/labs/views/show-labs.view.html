@@ -1,7 +1,134 @@
-<div class="container" data-ng-controller="LabController" data-ng-init="findLatestLab()">
+<div class="container" data-ng-controller="LabController" data-ng-init="find()">
+
     <div data-ng-bind="labHeader"></div>
 
+    <h4><div data-ng-bind="labHeader"></div></h4>
+    <!-- Progress panel -->
+	<div class="panel">
+		<div class="panelcontent">
+			<h1 class="headerIcon">
+				Your Progress
+				<div class="icon"></div>
+			</h1>
 
-    <canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions" width="350" height="350"></canvas>
-    <canvas tc-chartjs chart-type="line" chart-data="lineData" width="350" chart-options="lineOptions" height="350"></canvas>
+			<div class="row-fluid">
+				<div class="paneldate">Date: Jan 12, 2013</div> 
+			</div>
+
+			<div class="row data">
+				<div class="col-md-4 col-xs-12">
+
+					<div class="undectable true">
+						You are currently:
+						<div class="status">
+							<div class="indicator"></div>
+							<div class="text">undetectable</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<div class="good">Good job!</div>
+
+
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="chart">
+						<h1>Pie GRAPH</h1>
+                        <canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions" width="150" height="150"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="paneldraw open">
+			<div class="drawcontent">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<div class="control"><div class="icon"></div></div>
+		</div>
+	</div>
+
+	<!-- Viral Load panel -->
+	<div class="panel">
+		<div class="panelcontent">
+			<h1 class="headerIcon">
+				Viral Load
+				<div class="icon"></div>
+			</h1>
+
+			<div class="row-fluid">
+				<div class="paneldate">Date: Jan 12, 2013</div> 
+			</div>
+
+			<div class="row data">
+				<div class="col-md-4 col-xs-12">
+					<div class="resultNumber lighttext">
+						34<span class="unit">mm</span>
+					</div>
+
+					<div class="trend_status good up w70"></div>
+
+					<div class="good">Good job!</div>
+
+
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="chart">
+						<h1>GRAPH</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="paneldraw open">
+			<div class="drawcontent">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<div class="control"><div class="icon"></div></div>
+		</div>
+	</div>
+
+	<!-- CD4 panel -->
+	<div class="panel">
+		<div class="panelcontent">
+			<h1 class="headerIcon">
+				CD4/T-cell count
+				<div class="icon"></div>
+			</h1>
+
+			<div class="row-fluid">
+				<div class="paneldate">Date: Jan 12, 2013</div> 
+			</div>
+
+			<div class="row data">
+				<div class="col-md-4 col-xs-12">
+					<div class="resultNumber lighttext">
+						34<span class="unit">mm</span>
+					</div>
+
+					<div class="trend_status good up w70"></div>
+
+					<div class="good">Good job!</div>
+
+
+				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="chart">
+						<h1>GRAPH</h1>
+                        <div>
+                            <canvas tc-chartjs chart-type="line" chart-data="lineData" width="250" chart-options="lineOptions" height="250"></canvas>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="paneldraw open">
+			<div class="drawcontent">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+			</div>
+			<div class="control"><div class="icon"></div></div>
+		</div>
+	</div>
+
 </div>
