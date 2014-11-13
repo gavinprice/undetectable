@@ -31,6 +31,7 @@ p{
 h1{
 	font-family:'Lato', sans-serif, Helvetica, Verdana, Arial;
 	font-size: 52px;
+	margin: 0 0 10px;
 }
 
 h2{
@@ -42,9 +43,12 @@ h3{
 	font-size: 20px;
 }
 
-.panel{
-	margin:10px 0;
-	padding:10px;
+h4{
+	font-size: 30px;
+	font-family:'Lato', sans-serif, Helvetica, Verdana, Arial;
+	color: #5f737c;
+	font-weight: bold;
+	margin: 10px;
 }
 
 .headerIcon{
@@ -57,10 +61,58 @@ h3{
 	height: 20px;
 }
 
+/**** Panel ****/
+.panel{
+	margin:10px 0;
+	padding:0;
+}
+
+.panelcontent{
+	padding:10px;
+}
+
 .panel .data{
 	margin: ;
 }
 
+/**** Draws ****/
+.panel .paneldraw{
+
+}
+
+.panel .paneldraw .drawcontent{
+	background: #eeeeee;
+	padding: 20px 10px;
+	-moz-box-shadow:    inset 0 1px 2px #bebebe;
+   	-webkit-box-shadow: inset 0 1px 2px #bebebe;
+   	box-shadow:         inset 0 1px 2px #bebebe;
+    display: none;
+}
+
+.panel .paneldraw.open .drawcontent{
+	display: block;
+}
+
+.panel .paneldraw .control{
+	border-top: 1px solid #e3e3e3;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+}
+
+
+.panel .paneldraw .control .icon{
+	background: url(/modules/users/img/sprite.png) -1px -153px no-repeat;
+	margin:0 auto;
+	width: 30px;
+	height: 30px;
+}
+
+.panel .paneldraw.open .control .icon{
+	background-position: -1px -187px;
+}
+
+/**** Buttons ****/
 .button_panel{
 	margin: 20px 0 5px;
 }
@@ -123,6 +175,7 @@ h3{
 .resultNumber{
 	font-size: 45px;
 	color: #3a81a4;
+	text-align: center;
 }
 
 .resultNumber .unit{
@@ -182,6 +235,10 @@ h3{
 	}
 
 	.panel{
+		padding:0;
+	}
+
+	.panelcontent{
 		padding: 10px 20px;
 	}
 }
@@ -199,11 +256,11 @@ h3{
 		font-size: 24px;
 		-webkit-transition: font-size 1s /* For Safari 3.1 to 6.0 */
     	transition: font-size 1s;
-    	margin: 10px 0;
 	}
 
 	.btn{
 		width: 100%;
+		margin: 5px 0;
 	}
 }
 
