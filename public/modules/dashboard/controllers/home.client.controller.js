@@ -9,13 +9,12 @@ function($resource) {
 function($scope, Authentication, PillboxService, Labs) {
 	// This provides Authentication context.
 	$scope.authentication = Authentication;
-	console.log($scope.authentication);
+	
 	$scope.pillBox = {
 		isCompliant : false,
 		reason : ""
 	};
-	
-	
+
 	//This function handles the submitting of the pill adherance survey
 	$scope.submitPillBox = function() {
 		var pillbox = new PillboxService({
@@ -31,44 +30,51 @@ function($scope, Authentication, PillboxService, Labs) {
 		});
 
 	};
-	
-	
-	
+
 	//PIE CHART
 	
-	 $scope.labData = Labs.query(function(res){
-     	for(var i=0;i<res.length; i++){
-        	console.log(res[i]);
-        	$scope.labels.push(res[i].labDate)
-            $scope.data.push(res[i].cd4);
-        }
-    });
-	
-	
-	 $scope.pieData = [{ value : 25, color : "#F7464A" },{ value : 75, color : "#83c9c9" }];
+	$scope.labData = function() {
+		Labs.query(function(res) {
+			for (var i = 0; i < res.length; i++) {
+				if (!res[i].undetectable) {
+					$scope.undetectableCount++;
+				} else {
+					$scope.detectableCount++;
+				}
+			}
+		});
+	};
+	$scope.labData();
 
-        $scope.pieOptions =  {
-            // Chart.js options can go here.
-            scaleShowLabels: true,  // Interpolated JS string - can access value
-            scaleLabel: "12",
-            // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
-            scaleIntegersOnly: true,
+	$scope.pieData = [{
+		value : 3,
+		color : "#F7464A"
+	}, {
+		value : 3,
+		color : "#83c9c9"
+	}];
 
-            // String - Scale label font declaration for the scale label
-            scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+	$scope.pieOptions = {
+		// Chart.js options can go here.
+		scaleShowLabels : true, // Interpolated JS string - can access value
+		scaleLabel : "12",
+		// Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+		scaleIntegersOnly : true,
 
-            // Number - Scale label font size in pixels
-            scaleFontSize: 12,
+		// String - Scale label font declaration for the scale label
+		scaleFontFamily : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 
-            // String - Scale label font weight style
-            scaleFontStyle: "normal",
+		// Number - Scale label font size in pixels
+		scaleFontSize : 12,
 
-            // String - Scale label font colour
-            scaleFontColor: "#666",
+		// String - Scale label font weight style
+		scaleFontStyle : "normal",
 
-            // Boolean - whether or not the chart should be responsive and resize when the browser does.
-            responsive: true
-        };
-	
+		// String - Scale label font colour
+		scaleFontColor : "#666",
+
+		// Boolean - whether or not the chart should be responsive and resize when the browser does.
+		responsive : true
+	};
 
 }]);
