@@ -34,6 +34,7 @@ function($scope, Authentication, PillboxService, Labs) {
 	//PIE CHART
 	
 	$scope.labData = function() {
+		$scope.undetectableCount = 0, $scope.detectableCount = 0;
 		Labs.query(function(res) {
 			for (var i = 0; i < res.length; i++) {
 				if (!res[i].undetectable) {
@@ -42,17 +43,14 @@ function($scope, Authentication, PillboxService, Labs) {
 					$scope.detectableCount++;
 				}
 			}
+			$scope.pieData = [{value : $scope.undetectableCount,color : "#F7464A"}, {value : $scope.detectableCount,color : "#83c9c9"}];
+			var ctx = document.getElementById("progressChart").getContext("2d");
+            var mynewCd4Chart = new Chart(ctx).Pie($scope.pieData, {});
 		});
 	};
 	$scope.labData();
 
-	$scope.pieData = [{
-		value : 3,
-		color : "#F7464A"
-	}, {
-		value : 3,
-		color : "#83c9c9"
-	}];
+	
 
 	$scope.pieOptions = {
 		// Chart.js options can go here.
