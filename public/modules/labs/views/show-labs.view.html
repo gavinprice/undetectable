@@ -37,11 +37,11 @@
 			</div>
 		</div>
 
-		<div class="paneldraw open">
+		<div class="paneldraw" ng-class="{'open': $scope.progressDrawer}">
 			<div class="drawcontent">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				<p>For those who are still unsure, an HIV-positive person can achieve undetectable levels after undergoing antiretroviral therapy (ART). A level of a person's HIV viral load is what causes them to be more or less likely to transmit the disease. An undetectable viral load reduces the likelihood of transmission by 96 percent. Once a person achieves an undetectable status, it is possible to remain at this level provided that the person is compliant with their ART medication.</p>
 			</div>
-			<div class="control"><div class="icon"></div></div>
+			<div class="control" ng-click="$scope.progressDrawer = !$scope.progressDrawer"><div class="icon"></div></div>
 		</div>
 	</div>
 
@@ -78,11 +78,13 @@
 			</div>
 		</div>
 
-		<div class="paneldraw open">
+		<div class="paneldraw" ng-class="{'open': $scope.viralDrawer}">
 			<div class="drawcontent">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				<p>Viral load is a measurement of how much HIV is present in your blood. A sample of blood is drawn and sent to a lab for testing. Results are expressed as the number of copies of the virus per milliliter of blood. Each virus is called a "copy" because HIV reproduces by making copies of itself (replicating).
+
+The viral load test gives a more accurate picture than a CD4+ cell count of what the virus is doing in your body at the moment. (The CD4+ test measures the effect HIV is having on your immune system.) The viral load test is used to help decide when to start treatment with medicines (antiretroviral therapy) and when to change antiretroviral medicines.</p>
 			</div>
-			<div class="control"><div class="icon"></div></div>
+			<div class="control" ng-click="$scope.viralDrawer = !$scope.viralDrawer"><div class="icon"></div></div>
 		</div>
 	</div>
 
@@ -122,11 +124,17 @@
 			</div>
 		</div>
 		
-		<div class="paneldraw open">
+		<div class="paneldraw" ng-class="{'open': $scope.tcellDrawer}">
 			<div class="drawcontent">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+				<p>CD4 counts are reported as the number of cells in a cubic millimeter of blood. A normal CD4 count is from 500 to 1,500 cells per cubic millimeter of blood. It is more important to pay attention to the pattern of results than to any one test result.
+					In general, HIV disease is progressing if the CD4 count is going down. This means the immune system is getting weaker and you are more likely to get sick. In some people, CD4 counts can drop dramatically, even going down to zero.
+					The test does not always correspond with how well you are feeling. For example, some people can have high CD4 counts and do poorly. Others can have low CD4 counts and have few complications.
+					If your CD4 count goes down over several months, your doctor may recommend:
+
+					Beginning or changing antiretroviral therapy.
+					Starting preventive treatment for opportunistic infections.</p>
 			</div>
-			<div class="control"><div class="icon"></div></div>
+			<div class="control" ng-click="$scope.tcellDrawer = !$scope.tcellDrawer"><div class="icon"></div></div>
 		</div>
 	</div>
 
