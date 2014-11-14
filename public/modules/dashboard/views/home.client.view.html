@@ -1,30 +1,37 @@
 <section data-ng-controller="HomeController">
 	<!-- Intro -->
-	<div id="QuickTips" class="panel">
-
-		<div class="panelcontent">
-			<h2>Hi <span data-ng-bind="authentication.user.firstName"></span>,</h2>
-	        <div>
-	            <div ng-show="pillBox.isComplaint != 'false'">
-	                <span>Did you take your meds for today yet?</span></br>
-	                <button class="btn" ng-click="submitPillBox()">YES</button>
-	                <button class="btn" ng-click="pillBox.isComplaint = 'false' ">NO</button>
-	            </div>
-	            
-	            <span ng-show="pillBox.isComplaint == 'false'">
-	                Why didn't you?
-	                <select data-ng-model="pillBox.reason">
-	                    <option value="Forgot to take it">Forgot to take it</option>
-	                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
-	                    <option value="Adverse side effects">Adverse side effects</option>
-	                    <option value="Medicine unavailable">Medicine unavailable</option>
-	                    <option value="Think I dont need it">Think I dont need it</option>
-	                    <option value="Others">Others</option>
-	                </select></br>
-	                <button class="btn" ng-click="submitPillBox()">OK</button>
-	            </span>
-	        </div>
-	    </div>
+	<div id="Intro" class="hidden">
+		<div class="row no-margin">
+			<div class="col-md-2 no-padding">
+				<div class="greeting_icon">
+				</div>
+			</div>
+			<div class="col-md-6 panel">
+				<div class="panelcontent">
+					<h2>Hi <span data-ng-bind="authentication.user.firstName"></span>,</h2>
+			        <div>
+			            <div ng-show="pillBox.isComplaint != 'false'">
+			                <span class="question lighttext">Did you take your meds for today yet? &nbsp; &nbsp;</span>
+			                <button class="btn" ng-click="submitPillBox()">YES</button>
+			                <button class="btn" ng-click="pillBox.isComplaint = 'false' ">NO</button>
+			            </div>
+			            
+			            <span class="question lighttext" ng-show="pillBox.isComplaint == 'false'">
+			                Why didn't you?
+			                <select data-ng-model="pillBox.reason">
+			                    <option value="Forgot to take it">Forgot to take it</option>
+			                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
+			                    <option value="Adverse side effects">Adverse side effects</option>
+			                    <option value="Medicine unavailable">Medicine unavailable</option>
+			                    <option value="Think I dont need it">Think I dont need it</option>
+			                    <option value="Others">Others</option>
+			                </select>&nbsp; &nbsp;
+			                <button class="btn" ng-click="submitPillBox()">OK</button>
+			            </span>
+			        </div>
+			    </div>
+		    </div>
+		</div>
 	</div>
 	
 	<!-- Quick tips panel -->
