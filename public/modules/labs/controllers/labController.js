@@ -16,71 +16,28 @@ angular.module('labs')
 
 
 
-    .controller('LabController', ['$scope','$stateParams', '$location', 'Labs',
-    function($scope, $stateParams, $location, Labs) {
-        $scope.labHeader = 'Lab Results';
-        $scope.init = function() {
+    .controller('LabController', ['$scope','$stateParams', '$location','$filter', 'Labs',
+    function($scope, $stateParams, $location, $filter, Labs) {
 
-        };
+        $scope.addlineData = function(data, labels){
+            return {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "dataset",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "blue",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "green",
+                        pointHighlightFill: "red",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: data
+                        //data: [65, 59, 80, 81, 56, 55, 40]
+                    }
 
-        $scope.labels = [];
-        $scope.data = [];
+                ]
+            }
 
-        $scope.open = function($event) {
-            $event.preventDefault();
-            $event.stopPropagation();
-
-            $scope.opened = true;
-        };
-
-        $scope.findLatestLab = function(){
-
-        }
-
-        $scope.find = function() {
-            $scope.labs = Labs.query((function(res){
-                console.log(res);
-                for(var i=0;i<res.length; i++){
-                    $scope.labels.push(res[i].labDate)
-                    $scope.data.push(res[i].cd4);
-                }
-            }));
-
-        };
-
-        $scope.create = function() {
-            var lab = new Labs({
-                cd4: this.cd4,
-                undetectable: this.undetectable,
-                labDate: this.labDate,
-                viralLoad: this.viralLoad
-            });
-            lab.$save(function(response) {
-                $location.path('lab/' + response._id);
-                $scope.msg = response;
-
-            }, function(errorResponse) {
-                $scope.error = errorResponse.data.message;
-            });
-        };
-
-        $scope.lineData = {
-            //labels: $scope.labels,
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "blue",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "green",
-                    pointHighlightFill: "red",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    //data: $scope.data,
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                }
-
-            ]
         };
 
         $scope.pieData = [
@@ -116,6 +73,51 @@ angular.module('labs')
             // Chart.js options can go here.
             responsive: true
         };
+
+        $scope.labels = [];
+        $scope.data = [];
+
+        $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
+
+        $scope.findLatestLab = function(){
+
+        }
+
+        $scope.find = function() {
+            $scope.labs = Labs.query((function(res){
+                console.log(res);
+                for(var i=0;i<res.length; i++){
+                    $scope.labels.push($filter('date')(res[i].labDate, "dd/MM/yyyy"));
+                    $scope.data.push(res[i].cd4);
+                }
+                var ctx = document.getElementById("myline-chart").getContext("2d");
+                var mynewChart = new Chart(ctx).Line($scope.addlineData($scope.data, $scope.labels), {});
+            }));
+
+        };
+
+        $scope.create = function() {
+            var lab = new Labs({
+                cd4: this.cd4,
+                undetectable: this.undetectable,
+                labDate: this.labDate,
+                viralLoad: this.viralLoad
+            });
+            lab.$save(function(response) {
+                $location.path('lab/' + response._id);
+                $scope.msg = response;
+
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
+
+
 
     }
 ]);
