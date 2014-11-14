@@ -75,7 +75,8 @@ angular.module('labs')
         };
 
         $scope.labels = [];
-        $scope.data = [];
+        $scope.cd4data = [];
+        $scope.viraldata = [];
 
         $scope.open = function($event) {
             $event.preventDefault();
@@ -90,13 +91,17 @@ angular.module('labs')
 
         $scope.find = function() {
             $scope.labs = Labs.query((function(res){
-                console.log(res);
+            console.log(res);
                 for(var i=0;i<res.length; i++){
                     $scope.labels.push($filter('date')(res[i].labDate, "dd/MM/yyyy"));
-                    $scope.data.push(res[i].cd4);
+                    $scope.cd4data.push(res[i].cd4);
+                    $scope.viraldata.push(res[i].viralLoad);
                 }
-                var ctx = document.getElementById("myline-chart").getContext("2d");
-                var mynewChart = new Chart(ctx).Line($scope.addlineData($scope.data, $scope.labels), {});
+                var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
+//                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.data, $scope.labels), {});
+
+                var ctx2 = document.getElementById("viral-myline-chart").getContext("2d");
+                var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels), {});
             }));
 
         };
