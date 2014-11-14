@@ -28,7 +28,7 @@ var LabSchema = new Schema({
     },
     undetectable: {
         type: Boolean,
-        default: true
+        default: false
     },
     user: {
         type: Schema.ObjectId,
