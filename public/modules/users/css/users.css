@@ -160,6 +160,16 @@ h4{
 	color: #fff;
 }
 
+.statezero .button_panel{
+	text-align: center;
+}
+
+.statezero .btn{
+	width: 50%;
+	float: none;
+	margin: 0 0 30px;
+}
+
 .paneldate{
 	padding: 3px 5px;
 	text-align: right;
@@ -291,6 +301,10 @@ h4{
 	.btn{
 		width: 100%;
 		margin: 5px 0;
+	}
+
+	.statezero .btn{
+		width: 100%;
 	}
 }
 
