@@ -73,6 +73,11 @@ angular.module('labs')
         $scope.labels = [];
         $scope.cd4data = [];
         $scope.viraldata = [];
+        $scope.currCD4 = "";
+        $scope.currViralLoad = "";
+        $scope.viralStatus = false;
+        $scope.cd4Status = false;
+        $scope.undetectableState = false;
 
         $scope.open = function($event) {
             $event.preventDefault();
@@ -98,14 +103,32 @@ angular.module('labs')
                     $scope.labels.push($filter('date')(res[i].labDate, "dd/MM/yyyy"));
                     $scope.cd4data.push(res[i].cd4);
                     $scope.viraldata.push(res[i].viralLoad);
+
                 }
-                
+                $scope.undetectableState = res[res.length-1].undetectable;
                 $scope.pieData = [{value : $scope.undetectableCount,color : "#F7464A"}, {value : $scope.detectableCount,color : "#83c9c9"}];
-				var ctx = document.getElementById("progress-mypie-chart").getContext("2d");
-	            var mynewCd4Chart = new Chart(ctx).Pie($scope.pieData, {});
-                
+				var ctx0 = document.getElementById("progress-mypie-chart").getContext("2d");
+	            var mynewCd4Chart = new Chart(ctx0).Pie($scope.pieData, {});
+
+                var prevCD4 = res[res.length-2].cd4;
+                $scope.currCD4 = res[res.length-1].cd4;
+
+                console.log(prevCD4);
+                console.log($scope.currCD4);
+
+                if ($scope.currCD4 >= prevCD4) {
+                    $scope.cd4Status = true; // CD4 is up
+                }
+
+                var prevViralLoad = res[res.length-2].viralLoad;
+                $scope.currViralLoad = res[res.length-1].viralLoad;
+
+                if ($scope.currViralLoad <= prevViralLoad) {
+                    $scope.viralStatus = true; // viral load is down
+                }
+
                 var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
-               var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
+                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
 
                 var ctx2 = document.getElementById("viral-myline-chart").getContext("2d");
                 var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels), {});

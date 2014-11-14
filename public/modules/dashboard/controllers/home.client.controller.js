@@ -32,7 +32,7 @@ function($scope, Authentication, PillboxService, Labs) {
 	};
 
 	//PIE CHART
-	
+	$scope.undetectableStatus = false;
 	$scope.labData = function() {
 		$scope.undetectableCount = 0, $scope.detectableCount = 0;
 		Labs.query(function(res) {
@@ -43,6 +43,7 @@ function($scope, Authentication, PillboxService, Labs) {
 					$scope.detectableCount++;
 				}
 			}
+            $scope.undetectableStatus = res[res.length-1].undetectable;
 			$scope.pieData = [{value : $scope.undetectableCount,color : "#F7464A"}, {value : $scope.detectableCount,color : "#83c9c9"}];
 			var ctx = document.getElementById("progressChart").getContext("2d");
             var mynewCd4Chart = new Chart(ctx).Pie($scope.pieData, {});

@@ -15,7 +15,7 @@
 			<div class="row data">
 				<div class="col-md-4 col-xs-12">
 
-					<div class="undectable true">
+					<div ng-show="undetectableState" class="undectable true">
 						You are currently:
 						<div class="status">
 							<div class="indicator"></div>
@@ -24,7 +24,17 @@
 						</div>
 					</div>
 
-					<div class="good">Good job!</div>
+					<div ng-show="undetectableState" class="good">Good job!</div>
+
+                    <div ng-show="!undetectableState" class="undectable">
+                        You are currently:
+                        <div class="status">
+                            <div class="indicator"></div>
+                            <div class="text">detectable</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
 
 
 				</div>
@@ -60,12 +70,12 @@
 			<div class="row data">
 				<div class="col-md-4 col-xs-12">
 					<div class="resultNumber lighttext">
-						34<span class="unit">mm</span>
+                        <span data-ng-bind=currViralLoad></span><span class="unit">copies/mL</span>
 					</div>
 
-					<div class="trend_status good up w70"></div>
-
-					<div class="good">Good job!</div>
+					<div ng-show="viralStatus" class="trend_status w70 good down"></div>
+                    <div ng-show="!viralStatus" class="trend_status w70 bad up"></div>
+					<div ng-show="viralStatus" class="good">Good job!</div>
 
 
 				</div>
@@ -103,12 +113,12 @@ The viral load test gives a more accurate picture than a CD4+ cell count of what
 			<div class="row data">
 				<div class="col-md-4 col-xs-12">
 					<div class="resultNumber lighttext">
-						34<span class="unit">mm</span>
+                        <span data-ng-bind=currCD4></span><span class="unit">cells mm3</span>
 					</div>
 
-					<div class="trend_status good up w70"></div>
-
-					<div class="good">Good job!</div>
+					<div ng-show="cd4Status" class="trend_status good up w70"></div>
+                    <div ng-show="!cd4Status" class="trend_status bad down w70"></div>
+					<div ng-show="cd4Status" class="good">Good job!</div>
 
 
 				</div>
