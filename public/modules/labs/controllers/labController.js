@@ -98,7 +98,7 @@ angular.module('labs')
                     $scope.viraldata.push(res[i].viralLoad);
                 }
                 var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
-//                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.data, $scope.labels), {});
+               var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
 
                 var ctx2 = document.getElementById("viral-myline-chart").getContext("2d");
                 var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels), {});
