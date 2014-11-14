@@ -64,7 +64,7 @@ exports.update = function(req, res) {
  * List of Articles
  */
 exports.list = function(req, res) {
-    Lab.find().sort('-created').populate('user', 'displayName').exec(function(err, labs) {
+    Lab.find().sort({'labDate':1}).populate('user', 'displayName').exec(function(err, labs) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
