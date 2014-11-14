@@ -64,7 +64,7 @@ exports.update = function(req, res) {
  * List of Articles
  */
 exports.list = function(req, res) {
-    Lab.find().sort({'labDate':1}).populate('user', 'displayName').exec(function(err, labs) {
+    Lab.find().sort({'labDate':1}).where('user').equals(req.user._id).populate('user', 'displayName').exec(function(err, labs) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -88,7 +88,7 @@ exports.LabByID = function(req, res, next, id) {
 };
 
 exports.LatestLab = function(req, res, next, id) {
-    Lab.find().limit(1).sort({$natural:-1}).exec(function(err, lab) {
+    Lab.find().limit(1).sort({$natural:-1}).where('user').equals(req.user._id).exec(function(err, lab) {
         if (err) return next(err);
         if (!lab) return next(new Error('Failed to load lab ' + id));
         req.lab = lab;
