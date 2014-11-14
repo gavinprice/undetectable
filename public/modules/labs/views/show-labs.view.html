@@ -1,7 +1,4 @@
 <div class="container" data-ng-controller="LabController" data-ng-init="find()">
-
-    <div data-ng-bind="labHeader"></div>
-
     <h4><div data-ng-bind="labHeader"></div></h4>
     <!-- Progress panel -->
 	<div class="panel">
@@ -33,8 +30,8 @@
 				</div>
 				<div class="col-md-8 col-xs-12">
 					<div class="chart">
-						<h1>Pie GRAPH</h1>
-                        <canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions" width="150" height="150"></canvas>
+						<h3>Percentage of maintained 'Undetectable' state</h3>
+                        <canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions"></canvas>
 					</div>
 				</div>
 			</div>
@@ -116,7 +113,7 @@
 					<div class="chart">
 						<h1>GRAPH</h1>
                         <div>
-                            <canvas tc-chartjs chart-type="line" chart-data="lineData" width="250" chart-options="lineOptions" height="250"></canvas>
+                            <canvas tc-chartjs chart-type="line" chart-data="lineData" width="auto" chart-options="lineOptions" height="auto"></canvas>
                         </div>
 					</div>
 				</div>

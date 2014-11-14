@@ -70,11 +70,11 @@ angular.module('labs')
             datasets: [
                 {
                     label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "blue",
+                    fillColor: "rgba(143,131,201,0.2)",
+                    strokeColor: "#fff",
                     pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "green",
-                    pointHighlightFill: "red",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
                     //data: $scope.data,
                     data: [65, 59, 80, 81, 56, 55, 40]
@@ -84,7 +84,7 @@ angular.module('labs')
         };
 
         $scope.pieData = [
-            { value : 25, color : "#F7464A" },
+            { value : 25, color : "#8f83c9" },
             { value : 75, color : "#83c9c9" }
 
         ];
