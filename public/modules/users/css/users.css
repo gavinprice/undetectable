@@ -52,6 +52,18 @@ h4{
 	margin: 10px;
 }
 
+.no-padding{
+	padding:0 !important;
+}
+
+.no-margin{
+	margin:0 !important;
+}
+
+.hidden{
+	display: none;
+}
+
 .headerIcon{
 
 }
@@ -60,6 +72,21 @@ h4{
 	float: right;
 	width: 20px;
 	height: 20px;
+}
+
+#Intro .greeting_icon{
+	background: url(/modules/users/img/greeting.png) no-repeat;
+	position: relative;
+	width: 168px;
+	height: 159px;
+	top: 50px;
+	right: 0;
+	z-index: -1;
+	float: right;
+}
+
+.question{
+	font-size: 18px;
 }
 
 /**** Panel ****/
