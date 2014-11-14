@@ -1,6 +1,6 @@
-<section data-ng-controller="HomeController">
+<section data-ng-controller="HomeController" data-ng-init="init()">
 	<!-- Intro -->
-	<div id="Intro">
+	<div id="Intro" ng-hide="$scope.hideAdherance">
 		<div class="row no-margin">
 			<div class="col-md-2 no-padding">
 				<div class="greeting_icon">

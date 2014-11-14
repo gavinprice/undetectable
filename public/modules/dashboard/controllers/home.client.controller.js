@@ -30,7 +30,20 @@ function($scope, Authentication, PillboxService, Labs) {
 		});
 
 	};
-
+	
+	$scope.adherance = function(){
+		PillboxService.query(function(res){
+			for (var i = 0; i < res.length; i++) {
+				if(new Date(res[i].created).getDate() == new Date().getDate()){
+					$scope.hideAdherance = true;
+					break;
+				}
+			}
+		});
+	};
+	
+	
+	
 	//PIE CHART
 	$scope.undetectableStatus = false;
 	$scope.labData = function() {
@@ -49,9 +62,12 @@ function($scope, Authentication, PillboxService, Labs) {
             var mynewCd4Chart = new Chart(ctx).Pie($scope.pieData, {});
 		});
 	};
-	$scope.labData();
-
 	
+
+	$scope.init = function(){
+		$scope.adherance();
+		$scope.labData();
+	};
 
 	$scope.pieOptions = {
 		// Chart.js options can go here.

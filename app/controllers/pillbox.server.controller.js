@@ -73,7 +73,7 @@ exports.delete = function(req, res) {
  * List of Pillbox
  */
 exports.list = function(req, res) {
-	Pillbox.find().sort('-created').populate('user', 'displayName').exec(function(err, pillboxs) {
+	Pillbox.find().sort('-created').where('user').equals(req.user._id).populate('user', 'displayName').exec(function(err, pillboxs) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
