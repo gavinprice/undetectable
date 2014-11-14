@@ -14,7 +14,7 @@ function($scope, Authentication, PillboxService, Labs) {
 		isCompliant : false,
 		reason : ""
 	};
-
+	$scope.hideAdherance = false;
 	//This function handles the submitting of the pill adherance survey
 	$scope.submitPillBox = function() {
 		var pillbox = new PillboxService({
@@ -24,7 +24,7 @@ function($scope, Authentication, PillboxService, Labs) {
 		pillbox.$save(function(response) {
 			$scope.pillBox.isCompliant = '';
 			$scope.pillBox.reason = '';
-			alert("Success");
+			//TODO: hide this
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 		});
