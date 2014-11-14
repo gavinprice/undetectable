@@ -67,7 +67,7 @@ angular.module('labs')
 
         $scope.lineOptions =  {
             // Chart.js options can go here.
-            responsive: true
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
         };
 
         $scope.labels = [];
@@ -128,10 +128,10 @@ angular.module('labs')
                 }
 
                 var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
-                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
+                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels),  $scope.lineOptions);
 
                 var ctx2 = document.getElementById("viral-myline-chart").getContext("2d");
-                var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels), {});
+                var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels),  $scope.lineOptions);
             }));
 
         };
