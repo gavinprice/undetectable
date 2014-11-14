@@ -75,7 +75,8 @@ angular.module('labs')
         };
 
         $scope.labels = [];
-        $scope.data = [];
+        $scope.cd4data = [];
+        $scope.viraldata = [];
 
         $scope.open = function($event) {
             $event.preventDefault();
@@ -90,13 +91,17 @@ angular.module('labs')
 
         $scope.find = function() {
             $scope.labs = Labs.query((function(res){
-                console.log(res);
+            console.log(res);
                 for(var i=0;i<res.length; i++){
                     $scope.labels.push($filter('date')(res[i].labDate, "dd/MM/yyyy"));
-                    $scope.data.push(res[i].cd4);
+                    $scope.cd4data.push(res[i].cd4);
+                    $scope.viraldata.push(res[i].viralLoad);
                 }
-                var ctx = document.getElementById("myline-chart").getContext("2d");
-                var mynewChart = new Chart(ctx).Line($scope.addlineData($scope.data, $scope.labels), {});
+                var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
+               var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
+
+                var ctx2 = document.getElementById("viral-myline-chart").getContext("2d");
+                var mynewViralChart = new Chart(ctx2).Line($scope.addlineData($scope.viraldata, $scope.labels), {});
             }));
 
         };
@@ -117,7 +122,41 @@ angular.module('labs')
             });
         };
 
+        $scope.lineData = {
+            //labels: $scope.labels,
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(143,131,201,0.2)",
+                    strokeColor: "#fff",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    //data: $scope.data,
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
 
+            ]
+        };
+
+        $scope.pieData = [
+            { value : 25, color : "#8f83c9" },
+            { value : 75, color : "#83c9c9" }
+
+        ];
+
+        $scope.pieOptions =  {
+            // Chart.js options can go here.
+            scaleShowLabels: true,  // Interpolated JS string - can access value
+            scaleLabel: "12",
+            // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
+            scaleIntegersOnly: true,
+
+            // String - Scale label font declaration for the scale label
+            scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+        }
 
     }
 ]);
