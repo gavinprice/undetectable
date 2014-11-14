@@ -5,26 +5,33 @@ function($resource) {
 	return $resource('pillboxs/:pillboxId', {
 		pillboxId : '@_id'
 	});
-}]).controller('HomeController', ['$scope', 'Authentication', 'PillboxService', 'Labs',
-function($scope, Authentication, PillboxService, Labs) {
+}]).controller('HomeController', ['$scope', 'Authentication', 'PillboxService', 'Labs', '$window',
+function($scope, Authentication, PillboxService, Labs, $window) {
 	// This provides Authentication context.
 	$scope.authentication = Authentication;
 	
-	$scope.pillBox = {
-		isCompliant : false,
-		reason : ""
-	};
 	$scope.hideAdherance = false;
 	//This function handles the submitting of the pill adherance survey
-	$scope.submitPillBox = function() {
+	$scope.confirmAdherance = function() {
 		var pillbox = new PillboxService({
-			isCompliant : this.pillBox.isCompliant,
-			reason : this.pillBox.reason
+			isCompliant : true,
+			reason : ""
 		});
 		pillbox.$save(function(response) {
-			$scope.pillBox.isCompliant = '';
+			$window.location.reload();
+		}, function(errorResponse) {
+			$scope.error = errorResponse.data.message;
+		});
+	};
+	
+	$scope.denyAdherance = function() {
+		var pillbox = new PillboxService({
+			isCompliant : false,
+			reason : $scope.pillBox.reason
+		});
+		pillbox.$save(function(response) {
 			$scope.pillBox.reason = '';
-			//TODO: hide this
+			$window.location.reload();
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 		});
@@ -35,7 +42,7 @@ function($scope, Authentication, PillboxService, Labs) {
 		PillboxService.query(function(res){
 			for (var i = 0; i < res.length; i++) {
 				if(new Date(res[i].created).getDate() == new Date().getDate()){
-					$scope.hideAdherance = true;
+					$('#Intro').addClass("hidden")
 					break;
 				}
 			}
@@ -64,10 +71,7 @@ function($scope, Authentication, PillboxService, Labs) {
 	};
 	
 
-	$scope.init = function(){
-		$scope.adherance();
-		$scope.labData();
-	};
+	
 
 	$scope.pieOptions = {
 		// Chart.js options can go here.
@@ -90,6 +94,12 @@ function($scope, Authentication, PillboxService, Labs) {
 
 		// Boolean - whether or not the chart should be responsive and resize when the browser does.
 		responsive : true
+	};
+	
+	
+	$scope.init = function(){
+		$scope.adherance();
+		$scope.labData();
 	};
 
 }]);

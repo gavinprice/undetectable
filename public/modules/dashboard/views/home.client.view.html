@@ -1,7 +1,7 @@
 <section data-ng-controller="HomeController" data-ng-init="init()">
 	<div data-ng-show="authentication.user">
 		<!-- Intro -->
-		<div id="Intro" ng-hide="$scope.hideAdherance">
+		<div id="Intro">
 			<div class="row no-margin">
 				<div class="col-md-2 no-padding">
 					<div class="greeting_icon">
@@ -13,7 +13,7 @@
 						<div>
 							<div ng-show="pillBox.isComplaint != 'false'">
 								<span class="question lighttext">Did you take your meds for today yet? &nbsp; &nbsp;</span>
-								<button class="btn" ng-click="submitPillBox()">
+								<button class="btn" ng-click="confirmAdherance()">
 									YES
 								</button>
 								<button class="btn" ng-click="pillBox.isComplaint = 'false' ">
@@ -30,7 +30,7 @@
 									<option value="Think I dont need it">Think I dont need it</option>
 									<option value="Others">Others</option>
 								</select>&nbsp; &nbsp;
-								<button class="btn" ng-click="submitPillBox()">
+								<button class="btn" ng-click="denyAdherance()">
 									OK
 								</button> </span>
 						</div>
