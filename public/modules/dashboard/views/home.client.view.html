@@ -4,39 +4,40 @@
 
 		<div class="panelcontent">
 			<h2>Hi <span data-ng-bind="authentication.user.firstName"></span>,</h2>
-	        <div>
-	            <div ng-show="pillBox.isComplaint != 'false'">
-	                <span>Did you take your meds for today yet?</span></br>
-	                <button class="btn" ng-click="submitPillBox()">YES</button>
-	                <button class="btn" ng-click="pillBox.isComplaint = 'false' ">NO</button>
-	            </div>
-	            
-	            <span ng-show="pillBox.isComplaint == 'false'">
-	                Why didn't you?
-	                <select data-ng-model="pillBox.reason">
-	                    <option value="Forgot to take it">Forgot to take it</option>
-	                    <option value="Didnt fill the prescription">Didnt fill the prescription</option>
-	                    <option value="Adverse side effects">Adverse side effects</option>
-	                    <option value="Medicine unavailable">Medicine unavailable</option>
-	                    <option value="Think I dont need it">Think I dont need it</option>
-	                    <option value="Others">Others</option>
-	                </select></br>
-	                <button class="btn" ng-click="submitPillBox()">OK</button>
-	            </span>
-	        </div>
-	    </div>
+			<div>
+				<div ng-show="pillBox.isComplaint != 'false'">
+					<span>Did you take your meds for today yet?</span></br>
+					<button class="btn" ng-click="submitPillBox()">
+						YES
+					</button>
+					<button class="btn" ng-click="pillBox.isComplaint = 'false' ">
+						NO
+					</button>
+				</div>
+
+				<span ng-show="pillBox.isComplaint == 'false'"> Why didn't you?
+					<select data-ng-model="pillBox.reason">
+						<option value="Forgot to take it">Forgot to take it</option>
+						<option value="Didnt fill the prescription">Didnt fill the prescription</option>
+						<option value="Adverse side effects">Adverse side effects</option>
+						<option value="Medicine unavailable">Medicine unavailable</option>
+						<option value="Think I dont need it">Think I dont need it</option>
+						<option value="Others">Others</option>
+					</select></br>
+					<button class="btn" ng-click="submitPillBox()">
+						OK
+					</button> </span>
+			</div>
+		</div>
 	</div>
-	
+
 	<!-- Quick tips panel -->
 	<div id="QuickTips" class="panel">
 		<div class="panelcontent">
-			<h1 class="headerIcon">
-				Quick Tips
-				<div class="icon"></div>
-			</h1>
+			<h1 class="headerIcon"> Quick Tips <div class="icon"></div></h1>
 			<p>
-				Good nutrition is important for everyone’s health. Nutrition plays an important role in the health of the immune system and its ability to fight infections. Healthy eating also helps you become and stay a healthy weight, and can help reduce the risk of developing heart disease, diabetes, cancer and osteoporosis.	
-				Having HIV is unlikely to mean that that you have to make any drastic changes to your diet – your existing diet will probably meet all your nutritional needs. However, it is important to get enough nutrients to help you stay well. Good nutrition is important during the time before you start HIV treatment. It is also an important part of helping anti-HIV drugs work as well as possible once you are taking them. 
+				Good nutrition is important for everyone’s health. Nutrition plays an important role in the health of the immune system and its ability to fight infections. Healthy eating also helps you become and stay a healthy weight, and can help reduce the risk of developing heart disease, diabetes, cancer and osteoporosis.
+				Having HIV is unlikely to mean that that you have to make any drastic changes to your diet – your existing diet will probably meet all your nutritional needs. However, it is important to get enough nutrients to help you stay well. Good nutrition is important during the time before you start HIV treatment. It is also an important part of helping anti-HIV drugs work as well as possible once you are taking them.
 			</p>
 
 			<div class="button_panel">
@@ -49,41 +50,40 @@
 	<!-- Lab results panel -->
 	<div class="panel">
 		<div class="panelcontent">
-			<h1 class="headerIcon">
-				Your Progress
-				<div class="icon"></div>
-			</h1>
+			<h1 class="headerIcon"> Your Progress <div class="icon"></div></h1>
 
 			<div class="row-fluid">
-				<div class="paneldate">Since: Jan 12, 2013</div> 
+				<div class="paneldate">
+					Since: {{authentication.user.created | date:"dd MMM, yyyy"}}
+				</div>
 			</div>
 
 			<div class="row data">
 				<div class="col-md-4 col-xs-12">
 
-					<div class="undectable true">
-						You are currently:
+					<div class="undectable true">You are currently:
 						<div class="status">
 							<div class="indicator"></div>
 							<div class="text">undetectable</div>
 							<div class="clearfix"></div>
 						</div>
 					</div>
-
-
 					<div class="good">Good job!</div>
-
-
 				</div>
 				<div class="col-md-8 col-xs-12">
 					<div class="chart">
 						<h1>GRAPH</h1>
+						<div>
+							<canvas tc-chartjs chart-type="pie" chart-data= "pieData" chart-options= "pieOptions" width="150" height="150"></canvas>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="button_panel">
-				<button class="btn">Read More</button>
+				<button class="btn">
+					Read More
+				</button>
 			</div>
 			<div class="clearfix"></div>
 		</div>
