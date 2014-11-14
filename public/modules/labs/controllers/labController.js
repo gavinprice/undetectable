@@ -40,11 +40,7 @@ angular.module('labs')
 
         };
 
-        $scope.pieData = [
-            { value : 25, color : "#F7464A" },
-            { value : 75, color : "#83c9c9" }
-
-        ];
+       
 
         $scope.pieOptions =  {
             // Chart.js options can go here.
@@ -90,13 +86,24 @@ angular.module('labs')
         }
 
         $scope.find = function() {
+            $scope.undetectableCount = 0, $scope.detectableCount = 0;
             $scope.labs = Labs.query((function(res){
             console.log(res);
                 for(var i=0;i<res.length; i++){
+                    if (!res[i].undetectable) {
+						$scope.undetectableCount++;
+					} else {
+						$scope.detectableCount++;
+					}
                     $scope.labels.push($filter('date')(res[i].labDate, "dd/MM/yyyy"));
                     $scope.cd4data.push(res[i].cd4);
                     $scope.viraldata.push(res[i].viralLoad);
                 }
+                
+                $scope.pieData = [{value : $scope.undetectableCount,color : "#F7464A"}, {value : $scope.detectableCount,color : "#83c9c9"}];
+				var ctx = document.getElementById("progress-mypie-chart").getContext("2d");
+	            var mynewCd4Chart = new Chart(ctx).Pie($scope.pieData, {});
+                
                 var ctx = document.getElementById("cd4-myline-chart").getContext("2d");
                var mynewCd4Chart = new Chart(ctx).Line($scope.addlineData($scope.cd4data, $scope.labels), {});
 
